@@ -9,4 +9,4 @@ autoconf
 autoheader
 automake --add-missing
 ./configure --prefix=/users/juananto/project_465000412/juananto/software/lemon/build
-make
+make install
