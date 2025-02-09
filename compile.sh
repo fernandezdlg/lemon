@@ -8,5 +8,5 @@ aclocal
 autoconf
 autoheader
 automake --add-missing
-./configure --prefix=$(realpath ./build)
+./configure --prefix=/users/juananto/project_465000412/juananto/software/lemon/build
 make
