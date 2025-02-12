@@ -1,7 +1,8 @@
 # 
 
-source ../../load_modules.sh
+# source ../../load_modules.sh
 
+# export CC="/pfs/lustrep4/appl/lumi/SW/LUMI-23.09/G/EB/rocm/5.6.1/llvm/bin/clang-16"
 export CC=mpicc
 
 aclocal
