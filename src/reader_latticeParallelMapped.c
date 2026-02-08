@@ -50,6 +50,13 @@ int lemonReadLatticeParallelMapped(LemonReader *reader, void *data, MPI_Offset s
      We keep the individual file pointers synchronized explicitly, so assume they are here. */
   MPI_File_set_view(*reader->fp, reader->off + reader->pos, setup.etype, setup.ftype, "native", MPI_INFO_NULL);
 
+  if (reader->my_rank == 0) {
+    fprintf(stderr, "[LEMON] Debug: siteSize=%lld, localVol=%lld, totalVol=%lld\n",
+            (long long)siteSize, (long long)setup.localVol, (long long)setup.totalVol);
+    fprintf(stderr, "[LEMON] Debug: file pos=%lld, bytes to read=%lld\n",
+            (long long)reader->pos, (long long)(setup.localVol * siteSize));
+  }
+
   /* Blast away! */
   MPI_File_read_at_all(*reader->fp, reader->pos, data, setup.localVol, setup.etype, &status);
   MPI_Barrier(reader->cartesian);
